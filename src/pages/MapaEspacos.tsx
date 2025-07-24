@@ -3,6 +3,7 @@ import { ArrowLeft, Calendar, MapPin, Clock, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { BottomNavigation } from "@/components/BottomNavigation";
 
 interface Box {
   id: string;

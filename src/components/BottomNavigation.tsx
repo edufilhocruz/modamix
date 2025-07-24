@@ -1,10 +1,10 @@
-import { Home, Store, MapPin, User, Bell } from "lucide-react";
+import { Home, Store, Gift, User, Bell } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navigationItems = [
   { icon: Home, label: "Início", path: "/" },
   { icon: Store, label: "Feiras", path: "/feiras" },
-  { icon: MapPin, label: "Mapa", path: "/mapa" },
+  { icon: Gift, label: "Benefícios", path: "/beneficios" },
   { icon: User, label: "Perfil", path: "/perfil" },
   { icon: Bell, label: "Notificações", path: "/notificacoes" }
 ];

@@ -1,73 +1,104 @@
-# Welcome to your Lovable project
+# ModaMix App & Painel Administrativo
 
-## Project info
+Aplicativo web completo para gestão e participação em feirões ModaMix, com frontend em React + TypeScript e backend (futuro) em Go (Golang).
 
-**URL**: https://lovable.dev/projects/b3c04c8b-35d8-44e8-8564-013e63d6aa1e
+## ✨ Visão Geral
 
-## How can I edit this code?
+O ModaMix é um aplicativo web responsivo, pensado para dispositivos móveis e desktop, que oferece:
+- Experiência moderna para usuários finais (visitantes, expositores)
+- Painel administrativo completo para gestão de feiras, expositores, notificações e relatórios
+- Interface fiel ao design, com identidade visual ModaMix (laranja, amarelo, preto)
 
-There are several ways of editing your application.
+## 🏗️ Arquitetura
 
-**Use Lovable**
+- **Frontend:** React + TypeScript + Tailwind CSS
+- **Backend:** Go (Golang) — integração futura via REST API
+- **Gerenciamento de rotas:** React Router DOM
+- **Ícones:** Lucide React
+- **Estrutura baseada em features (feature-based)**
+- **Componentização e clean code**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b3c04c8b-35d8-44e8-8564-013e63d6aa1e) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Estrutura de Pastas (Frontend)
+```
+src/
+  features/
+    beneficios/
+    feiras/
+    notificacoes/
+    perfil/
+  pages/
+    admin/
+      Dashboard.tsx
+      Reports.tsx
+      Feiras.tsx
+      FeirasCriar.tsx
+      Notificacoes.tsx
+      ...
+  components/
+  hooks/
+  ui/
+  ...
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Como rodar o projeto (Frontend)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Rode o app:
+   ```bash
+   npm run dev
+   ```
+3. Acesse:
+   - App: [http://localhost:8080/](http://localhost:8080/)
+   - Admin: [http://localhost:8080/admin](http://localhost:8080/admin)
 
-**Use GitHub Codespaces**
+## 🔗 Integração com Backend Go (futuro)
+- O frontend está pronto para consumir APIs RESTful escritas em Go (Golang)
+- Basta substituir os serviços e hooks de mock por chamadas reais à API
+- Estrutura de services e types já preparada para integração
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🧩 Principais Funcionalidades
 
-## What technologies are used for this project?
+### Usuário (App)
+- Visualização de feiras e eventos
+- Sistema de pontos e benefícios (gamificação)
+- Perfil do usuário
+- Notificações (app, e-mail, WhatsApp)
+- Acesso rápido a informações, agenda, marcas, FAQ, contato, ingresso e mais
+- Navegação mobile-first, responsiva e moderna
 
-This project is built with:
+### Administrador (Painel Admin)
+- Dashboard com indicadores (feiras, parceiros, expositores, faturamento)
+- Relatórios e exportação (PDF, planilha)
+- Gestão de feiras: criar, listar, visualizar detalhes
+- Gestão de notificações: envio por app, e-mail, WhatsApp
+- Cadastro de novas feiras com busca automática de endereço por CEP e mapa dinâmico
+- Visualização de expositores pagantes e inadimplentes
+- Interface fiel ao design, com identidade visual ModaMix
+- Navegação separada para admin e usuário
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🖌️ UI/UX
+- Design mobile-first, inspirado em apps modernos
+- Cores: laranja, amarelo, preto (identidade ModaMix)
+- Componentes com animações, feedback visual e acessibilidade
+- Inputs com máscaras (CEP, valor), selects customizados, botões arredondados
 
-## How can I deploy this project?
+## 🔗 Integrações
+- **API Brasil Endereço:** busca automática de endereço por CEP
+- **Google Maps:** visualização dinâmica do endereço da feira
 
-Simply open [Lovable](https://lovable.dev/projects/b3c04c8b-35d8-44e8-8564-013e63d6aa1e) and click on Share -> Publish.
+## 📦 Futuras Integrações
+- Backend Go para feiras, expositores, notificações, relatórios
+- Autenticação e permissões
+- Upload de imagens para feiras
 
-## Can I connect a custom domain to my Lovable project?
+## 👨‍💻 Desenvolvimento
+- Estrutura pronta para integração com backend Go
+- Mock data facilmente substituível por API real
+- Código comentado e modularizado
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Para dúvidas, sugestões ou contribuições, entre em contato com a equipe ModaMix!

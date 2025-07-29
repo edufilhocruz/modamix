@@ -4,14 +4,21 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import Feiras from "./pages/Feiras";
-import Notificacoes from "./pages/Notificacoes";
-import MapaEspacos from "./pages/MapaEspacos";
+import Feiras from "./features/feiras/pages/Feiras";
+import Notificacoes from "./features/notificacoes/pages/Notificacoes";
+import MapaEspacos from "./features/mapa/pages/MapaEspacos";
 import PreCheckout from "./pages/PreCheckout";
 import NotFound from "./pages/NotFound";
-import Perfil from "./pages/Perfil";
-import BeneficiosModaMix from "./pages/BeneficiosModaMix";
+import Perfil from "./features/perfil/pages/Perfil";
+import Beneficios from "./features/beneficios/pages/Beneficios";
+import Dashboard from "./pages/admin/Dashboard";
+import Reports from "./pages/admin/Reports";
+import AdminFeiras from "./pages/admin/Feiras";
+import AdminNotificacoes from "./pages/admin/Notificacoes";
+import FeirasCriar from "./pages/admin/FeirasCriar";
 import { BottomNavigation } from "@/components/BottomNavigation";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminPerfil from "./pages/admin/Perfil";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +36,15 @@ const App = () => (
             <Route path="/mapa-espacos" element={<MapaEspacos />} />
             <Route path="/pre-checkout" element={<PreCheckout />} />
             <Route path="/perfil" element={<Perfil />} />
-            <Route path="/beneficios" element={<BeneficiosModaMix />} />
+            <Route path="/beneficios" element={<Beneficios />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="relatorios" element={<Reports />} />
+              <Route path="feiras" element={<AdminFeiras />} />
+              <Route path="notificacoes" element={<AdminNotificacoes />} />
+              <Route path="feiras/criar" element={<FeirasCriar />} />
+              <Route path="perfil" element={<AdminPerfil />} />
+            </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

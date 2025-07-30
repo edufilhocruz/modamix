@@ -19,24 +19,31 @@ import FeirasCriar from "./pages/admin/FeirasCriar";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminPerfil from "./pages/admin/Perfil";
+import ProfileSelection from "./pages/ProfileSelection";
+import Fornecedor from "./pages/Fornecedor";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <div className="relative min-h-screen max-w-sm mx-auto bg-white">
-          <Routes>
-            <Route path="/" element={<Index />} />
+const App = () => {
+  console.log('App component rendered, current pathname:', window.location.pathname);
+  
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <div className="relative min-h-screen max-w-sm mx-auto bg-white">
+            <Routes>
+              <Route path="/" element={<ProfileSelection />} />
+            <Route path="/app" element={<Index />} />
             <Route path="/feiras" element={<Feiras />} />
             <Route path="/notificacoes" element={<Notificacoes />} />
             <Route path="/mapa-espacos" element={<MapaEspacos />} />
             <Route path="/pre-checkout" element={<PreCheckout />} />
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/beneficios" element={<Beneficios />} />
+            <Route path="/fornecedor" element={<Fornecedor />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="relatorios" element={<Reports />} />
@@ -48,13 +55,13 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          {/* Exibir BottomNavigation em todas as telas, exceto NotFound */}
-          {/* Pode-se usar o useLocation para condicional, mas por simplicidade, sempre exibir exceto na rota * */}
+          {/* BottomNavigation é exibida condicionalmente (não aparece em /profile-selection) */}
           <BottomNavigation />
         </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;

@@ -1,6 +1,10 @@
 import React from 'react';
 import { FornecedorForm } from './FornecedorForm';
+import { ProdutoList } from './ProdutoList';
+import { ProdutoForm } from './ProdutoForm';
+import { ProdutoFilters } from './ProdutoFilters';
 import { FormDataFeira, MetodosPagamento } from '../types/fornecedor';
+import { useProdutos } from '../hooks/useProdutos';
 
 /**
  * Props para o componente FornecedorContent
@@ -21,6 +25,8 @@ export const FornecedorContent: React.FC<FornecedorContentProps> = React.memo(({
   onInputChange,
   onCheckboxChange
 }) => {
+  // Hook para gerenciar produtos
+  const produtosHook = useProdutos();
   const renderContent = () => {
     switch (activeSection) {
       case 'inicio':
@@ -116,6 +122,49 @@ export const FornecedorContent: React.FC<FornecedorContentProps> = React.memo(({
               onInputChange={onInputChange}
               onCheckboxChange={onCheckboxChange}
             />
+          </div>
+        );
+
+      case 'produtos':
+        return (
+          <div className="flex-1 p-4">
+            {/* Filtros e busca */}
+            <ProdutoFilters
+              searchTerm={produtosHook.searchTerm}
+              selectedCategory={produtosHook.selectedCategory}
+              categorias={produtosHook.categorias}
+              onSearchChange={produtosHook.setSearchTerm}
+              onCategoryChange={produtosHook.setSelectedCategory}
+              onCreateClick={produtosHook.openCreateForm}
+              totalProdutos={produtosHook.totalProdutos}
+              produtosAtivos={produtosHook.produtosAtivos}
+            />
+
+            {/* Lista de produtos */}
+            <div className="mt-6">
+              <ProdutoList
+                produtos={produtosHook.produtos}
+                isLoading={produtosHook.isLoadingProdutos}
+                onEdit={produtosHook.openEditForm}
+                onDelete={produtosHook.handleDeleteProduto}
+                onToggleStatus={produtosHook.toggleProdutoStatus}
+                formatPrice={produtosHook.formatPriceForDisplay}
+              />
+            </div>
+
+            {/* Modal de formulário */}
+            {produtosHook.showForm && (
+              <ProdutoForm
+                formData={produtosHook.formData}
+                categorias={produtosHook.categorias}
+                editingProduto={produtosHook.editingProduto}
+                isLoading={produtosHook.isLoading}
+                error={produtosHook.error}
+                onInputChange={produtosHook.handleInputChange}
+                onSubmit={produtosHook.editingProduto ? produtosHook.handleUpdateProduto : produtosHook.handleCreateProduto}
+                onClose={produtosHook.closeForm}
+              />
+            )}
           </div>
         );
 

@@ -21,15 +21,15 @@ export const AdminActionCard = React.memo(({
   return (
     <div
       ref={ref}
-      className="flex items-stretch justify-between gap-4 rounded-xl cursor-pointer transition-all duration-300 bg-white hover:shadow-lg hover:-translate-y-1 animate-fade-slide-in"
+      className="flex items-stretch justify-between gap-4 rounded-xl cursor-pointer transition-all duration-300 bg-modamix-yellow hover:shadow-lg hover:-translate-y-1 animate-fade-slide-in border border-orange-200"
       onClick={handleClick}
       style={{ willChange: 'transform, box-shadow' }}
     >
-      <div className="flex flex-col gap-1 flex-[2_2_0px]">
+      <div className="flex flex-col gap-1 flex-[2_2_0px] p-4">
         <p className="text-modamix-dark text-base font-bold leading-tight">{title}</p>
-        <p className="text-[#888163] text-sm font-normal leading-normal">{desc}</p>
+        <p className="text-modamix-dark/70 text-sm font-normal leading-normal">{desc}</p>
       </div>
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center bg-modamix-orange/20 rounded-r-xl">
         <Icon className="w-10 h-10 text-modamix-orange" />
       </div>
     </div>

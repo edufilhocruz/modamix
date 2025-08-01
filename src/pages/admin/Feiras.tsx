@@ -60,9 +60,18 @@ const AdminFeiras = () => {
               <span className="text-sm text-[#888163]">{formatDate(f.data)}</span>
             </div>
             <span className="text-base text-[#181810]">{f.endereco}</span>
-            <div className="flex gap-4 pt-1">
-              <span className="text-sm text-green-700 font-semibold">Pagantes: {f.pagantes}</span>
-              <span className="text-sm text-red-600 font-semibold">Faltam pagar: {f.faltamPagar}</span>
+
+            <div className="w-full bg-modamix-orange/20 rounded-full h-3 mt-2 relative">
+              <div 
+                className="bg-modamix-orange h-3 rounded-full transition-all duration-300"
+                style={{ 
+                  width: `${Math.round((f.pagantes / (f.pagantes + f.faltamPagar)) * 100)}%` 
+                }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs mt-1">
+              <span className="text-modamix-orange font-semibold">Reservados: {f.pagantes}</span>
+              <span className="text-modamix-orange font-semibold">Restantes: {f.faltamPagar}</span>
             </div>
           </div>
         ))}

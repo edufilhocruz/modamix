@@ -13,12 +13,20 @@ const Perfil = () => {
       <h1 className="text-2xl font-bold mb-4">Perfil do Usuário</h1>
       {/* Exemplo de bloco: <PerfilHeader /> <PerfilForm /> <PerfilStats /> */}
       <div className="text-gray-500 mb-8">Conteúdo do perfil em desenvolvimento...</div>
-      <button
-        className="w-full h-12 rounded-full bg-modamix-orange text-white text-base font-bold shadow-sm transition hover:bg-orange-600"
-        onClick={() => navigate('/admin')}
-      >
-        Acessar Painel Administrativo
-      </button>
+      <div className="space-y-3">
+        <button
+          className="w-full h-12 rounded-full bg-modamix-orange text-white text-base font-bold shadow-sm transition hover:bg-orange-600"
+          onClick={() => navigate('/')}
+        >
+          Trocar Perfil
+        </button>
+        <button
+          className="w-full h-12 rounded-full bg-modamix-yellow text-modamix-dark text-base font-bold shadow-sm transition hover:bg-yellow-500"
+          onClick={() => navigate('/admin')}
+        >
+          Acessar Painel Administrativo
+        </button>
+      </div>
     </div>
   );
 };

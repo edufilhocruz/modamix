@@ -13,6 +13,11 @@ export const BottomNavigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Não exibir a navbar na tela de seleção de perfil (rota raiz)
+  if (location.pathname === "/") {
+    return null;
+  }
+
   return (
     <footer className="fixed bottom-0 left-0 right-0 max-w-sm mx-auto bg-white border-t border-gray-200 flex justify-around p-2">
       {navigationItems.map((item, index) => {

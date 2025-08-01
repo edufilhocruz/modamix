@@ -51,7 +51,9 @@ src/
    npm run dev
    ```
 3. Acesse:
-   - App: [http://localhost:8080/](http://localhost:8080/)
+   - Tela Inicial (Seleção de Perfil): [http://localhost:8080/](http://localhost:8080/)
+   - App (Expositor): [http://localhost:8080/app](http://localhost:8080/app)
+   - Fornecedor: [http://localhost:8080/fornecedor](http://localhost:8080/fornecedor)
    - Admin: [http://localhost:8080/admin](http://localhost:8080/admin)
 
 ## 🔗 Integração com Backend Go (futuro)
@@ -61,13 +63,24 @@ src/
 
 ## 🧩 Principais Funcionalidades
 
-### Usuário (App)
+### Seleção de Perfil
+- Tela inicial para escolher entre Administrador, Fornecedor ou Expositor
+- Interface intuitiva com cards coloridos e ícones
+- Navegação direta para cada área específica
+
+### Usuário (App - Expositor)
 - Visualização de feiras e eventos
 - Sistema de pontos e benefícios (gamificação)
-- Perfil do usuário
+- Perfil do usuário com opção de trocar perfil
 - Notificações (app, e-mail, WhatsApp)
 - Acesso rápido a informações, agenda, marcas, FAQ, contato, ingresso e mais
 - Navegação mobile-first, responsiva e moderna
+
+### Fornecedor
+- Área dedicada para fornecedores (em desenvolvimento)
+- Gestão de produtos e vendas
+- Participação em feiras
+- Benefícios exclusivos
 
 ### Administrador (Painel Admin)
 - Dashboard com indicadores (feiras, parceiros, expositores, faturamento)
@@ -75,7 +88,7 @@ src/
 - Gestão de feiras: criar, listar, visualizar detalhes
 - Gestão de notificações: envio por app, e-mail, WhatsApp
 - Cadastro de novas feiras com busca automática de endereço por CEP e mapa dinâmico
-- Visualização de expositores pagantes e inadimplentes
+- Visualização de espaços reservados e restantes
 - Interface fiel ao design, com identidade visual ModaMix
 - Navegação separada para admin e usuário
 

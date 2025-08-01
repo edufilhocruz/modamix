@@ -20,7 +20,9 @@ import { BottomNavigation } from "@/components/BottomNavigation";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminPerfil from "./pages/admin/Perfil";
 import ProfileSelection from "./pages/ProfileSelection";
-import Fornecedor from "./pages/Fornecedor";
+import Fornecedor from "./features/fornecedor/pages/Fornecedor";
+import Expositores from "./pages/Expositores";
+import Organizador from "./pages/Organizador";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => {
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/beneficios" element={<Beneficios />} />
             <Route path="/fornecedor" element={<Fornecedor />} />
+            <Route path="/expositores" element={<Expositores />} />
+            <Route path="/organizador" element={<Organizador />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="relatorios" element={<Reports />} />

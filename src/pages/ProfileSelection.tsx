@@ -1,37 +1,55 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Shield, Package, Store } from "lucide-react";
+import { Shield, Package, Store, ShoppingBag, Users, Building2 } from "lucide-react";
 
 const ProfileSelection = () => {
   const navigate = useNavigate();
 
   const profiles = [
     {
+      id: "fornecedor",
+      title: "Fornecedor",
+      description: "Anuncie produtos para vender",
+      icon: Package,
+      color: "bg-blue-500",
+      textColor: "text-white",
+      route: "/fornecedor"
+    },
+    {
+      id: "expositores",
+      title: "Expositores",
+      description: "Compre produtos e espaços nas feiras",
+      icon: Store,
+      color: "bg-modamix-dark",
+      textColor: "text-white",
+      route: "/expositores"
+    },
+    {
+      id: "consumidor",
+      title: "Consumidor",
+      description: "Compre produtos nas feiras",
+      icon: ShoppingBag,
+      color: "bg-modamix-yellow",
+      textColor: "text-modamix-dark",
+      route: "/app"
+    },
+    {
+      id: "organizador",
+      title: "Organizador",
+      description: "Ofereça feiras para expositores",
+      icon: Building2,
+      color: "bg-green-500",
+      textColor: "text-white",
+      route: "/organizador"
+    },
+    {
       id: "admin",
       title: "Administrador",
-      description: "Gerencie feiras, relatórios e notificações",
+      description: "Gerencie todo o aplicativo",
       icon: Shield,
       color: "bg-modamix-orange",
       textColor: "text-white",
       route: "/admin"
-    },
-    {
-      id: "fornecedor",
-      title: "Fornecedor",
-      description: "Gerencie seus produtos e vendas",
-      icon: Package,
-      color: "bg-modamix-yellow",
-      textColor: "text-modamix-dark",
-      route: "/fornecedor"
-    },
-    {
-      id: "expositor",
-      title: "Expositor",
-      description: "Acesse feiras e benefícios",
-      icon: Store,
-      color: "bg-modamix-dark",
-      textColor: "text-white",
-      route: "/app"
     }
   ];
 

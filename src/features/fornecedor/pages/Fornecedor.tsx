@@ -1,9 +1,7 @@
 import React from 'react';
 import { FornecedorHeader } from '../components/FornecedorHeader';
 import { FornecedorContent } from '../components/FornecedorContent';
-import { FornecedorFooter } from '../components/FornecedorFooter';
 import { FornecedorNavbar } from '../components/FornecedorNavbar';
-import { useFornecedor } from '../hooks/useFornecedor';
 
 /**
  * Página principal da feature Fornecedor
@@ -11,16 +9,11 @@ import { useFornecedor } from '../hooks/useFornecedor';
  * Segue arquitetura limpa com separação de responsabilidades
  */
 const Fornecedor: React.FC = () => {
-  const {
-    formData,
-    isLoading,
-    error,
-    activeSection,
-    handleInputChange,
-    handleCheckboxChange,
-    handleSubmit,
-    handleSectionChange
-  } = useFornecedor();
+  const [activeSection, setActiveSection] = React.useState('inicio');
+
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section);
+  };
 
   return (
     <div className="relative flex size-full min-h-screen flex-col bg-[#fcfbf8] justify-between group/design-root overflow-x-hidden pb-24">
@@ -30,19 +23,10 @@ const Fornecedor: React.FC = () => {
       {/* Conteúdo principal - Baseado na seção ativa */}
       <FornecedorContent
         activeSection={activeSection}
-        formData={formData}
-        onInputChange={handleInputChange}
-        onCheckboxChange={handleCheckboxChange}
+        formData={{}}
+        onInputChange={() => {}}
+        onCheckboxChange={() => {}}
       />
-
-      {/* Footer com botão de submit - Só aparece na seção de feiras */}
-      {activeSection === 'feiras' && (
-        <FornecedorFooter
-          onSubmit={handleSubmit}
-          isLoading={isLoading}
-          error={error}
-        />
-      )}
 
       {/* Navbar fixa no rodapé */}
       <FornecedorNavbar 

@@ -6,7 +6,6 @@
 import React from 'react';
 import { X, Upload, Package } from 'lucide-react';
 import { FormDataProduto, Categoria } from '../types/fornecedor';
-import { FornecedorInput } from '../ui/FornecedorInput';
 
 /**
  * Props para o componente ProdutoForm
@@ -63,11 +62,12 @@ export const ProdutoForm: React.FC<ProdutoFormProps> = React.memo(({
             <label className="block text-sm font-medium text-modamix-dark mb-2">
               Nome do Produto *
             </label>
-            <FornecedorInput
+            <input
               type="text"
               value={formData.nome}
-              onChange={(value) => onInputChange('nome', value)}
+              onChange={(e) => onInputChange('nome', e.target.value)}
               placeholder="Ex: Camiseta Básica"
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-modamix-dark"
               required
             />
           </div>
@@ -92,11 +92,12 @@ export const ProdutoForm: React.FC<ProdutoFormProps> = React.memo(({
             <label className="block text-sm font-medium text-modamix-dark mb-2">
               Preço *
             </label>
-            <FornecedorInput
-              type="currency"
+            <input
+              type="text"
               value={formData.preco}
-              onChange={(value) => onInputChange('preco', value)}
+              onChange={(e) => onInputChange('preco', e.target.value)}
               placeholder="R$ 0,00"
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-modamix-dark"
               required
             />
           </div>
@@ -126,12 +127,13 @@ export const ProdutoForm: React.FC<ProdutoFormProps> = React.memo(({
             <label className="block text-sm font-medium text-modamix-dark mb-2">
               Estoque *
             </label>
-            <FornecedorInput
+            <input
               type="number"
               value={formData.estoque}
-              onChange={(value) => onInputChange('estoque', value)}
+              onChange={(e) => onInputChange('estoque', e.target.value)}
               placeholder="0"
               min="0"
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-modamix-dark"
               required
             />
           </div>
@@ -142,12 +144,13 @@ export const ProdutoForm: React.FC<ProdutoFormProps> = React.memo(({
               URL da Imagem (opcional)
             </label>
             <div className="relative">
-              <FornecedorInput
-                type="text"
-                value={formData.imagem || ''}
-                onChange={(value) => onInputChange('imagem', value)}
-                placeholder="https://exemplo.com/imagem.jpg"
-              />
+                          <input
+              type="text"
+              value={formData.imagem || ''}
+              onChange={(e) => onInputChange('imagem', e.target.value)}
+              placeholder="https://exemplo.com/imagem.jpg"
+              className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-modamix-dark"
+            />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
                 <Upload className="w-4 h-4 text-gray-400" />
               </div>

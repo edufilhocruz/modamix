@@ -19,7 +19,6 @@ export const FornecedorNavbar: React.FC<FornecedorNavbarProps> = React.memo(({
 }) => {
   const navItems = [
     { icon: Home, label: "Início", section: "inicio" },
-    { icon: Store, label: "Feiras", section: "feiras" },
     { icon: Package, label: "Produtos", section: "produtos" },
     { icon: FileBarChart2, label: "Relatórios", section: "relatorios" },
     { icon: User, label: "Perfil", section: "perfil" },

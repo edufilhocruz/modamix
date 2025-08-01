@@ -1,5 +1,5 @@
 import React from 'react';
-import { FornecedorForm } from './FornecedorForm';
+import { Package } from 'lucide-react';
 import { ProdutoList } from './ProdutoList';
 import { ProdutoForm } from './ProdutoForm';
 import { ProdutoFilters } from './ProdutoFilters';
@@ -37,93 +37,113 @@ export const FornecedorContent: React.FC<FornecedorContentProps> = React.memo(({
                 Bem-vindo, ModaMix Ltda
               </h2>
               <p className="text-modamix-dark/80">
-                Gerencie suas feiras e produtos de forma simples e eficiente.
+                Venda seus produtos diretamente para expositores.
               </p>
             </div>
 
-            {/* Indicadores das Feiras */}
+            {/* Desempenho dos Produtos */}
             <div className="space-y-4 mb-6">
               <h3 className="text-lg font-semibold text-modamix-dark">
-                Suas Feiras
+                Desempenho dos Produtos
               </h3>
               
-              {/* Feira Ativa */}
+              {/* Produto Mais Vendido */}
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold text-modamix-dark">
-                    Feira de Verão 2024
+                    Camiseta Básica
                   </h4>
                   <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
-                    Ativa
+                    Mais Vendido
                   </span>
                 </div>
                 <div className="space-y-2 text-sm text-modamix-dark/70">
-                  <p>• Local: Shopping Center</p>
-                  <p>• Data: 15/01/2024 - 30/01/2024</p>
-                  <p>• Barracas: 25/30 ocupadas</p>
-                  <p>• Receita: R$ 12.500,00</p>
+                  <p>• Vendas: 150 unidades</p>
+                  <p>• Receita: R$ 4.485,00</p>
+                  <p>• Expositores: 8 compradores</p>
+                  <p>• Avaliação: ⭐⭐⭐⭐⭐ (4.8)</p>
                 </div>
               </div>
 
-              {/* Próxima Feira */}
+              {/* Produto em Destaque */}
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold text-modamix-dark">
-                    Feira de Inverno 2024
+                    Calça Jeans
                   </h4>
                   <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">
-                    Agendada
+                    Em Alta
                   </span>
                 </div>
                 <div className="space-y-2 text-sm text-modamix-dark/70">
-                  <p>• Local: Parque Central</p>
-                  <p>• Data: 01/07/2024 - 15/07/2024</p>
-                  <p>• Barracas: 0/40 ocupadas</p>
-                  <p>• Preço: R$ 80,00 por barraca</p>
+                  <p>• Vendas: 75 unidades</p>
+                  <p>• Receita: R$ 6.742,50</p>
+                  <p>• Expositores: 5 compradores</p>
+                  <p>• Avaliação: ⭐⭐⭐⭐ (4.2)</p>
                 </div>
               </div>
             </div>
 
-            {/* Resumo Geral */}
-            <div className="bg-white rounded-xl p-4 shadow-sm">
+            {/* Resumo de Vendas */}
+            <div className="bg-white rounded-xl p-4 shadow-sm mb-6">
               <h3 className="font-semibold text-modamix-dark mb-3">
-                Resumo Geral
+                Resumo de Vendas
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-modamix-orange">2</p>
-                  <p className="text-xs text-modamix-dark/70">Feiras Criadas</p>
+                  <p className="text-2xl font-bold text-modamix-orange">3</p>
+                  <p className="text-xs text-modamix-dark/70">Produtos Ativos</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-modamix-orange">25</p>
-                  <p className="text-xs text-modamix-dark/70">Barracas Alugadas</p>
+                  <p className="text-2xl font-bold text-modamix-orange">225</p>
+                  <p className="text-xs text-modamix-dark/70">Unidades Vendidas</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-modamix-orange">R$ 12.500</p>
+                  <p className="text-2xl font-bold text-modamix-orange">R$ 11.227</p>
                   <p className="text-xs text-modamix-dark/70">Receita Total</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-modamix-orange">85%</p>
-                  <p className="text-xs text-modamix-dark/70">Taxa de Ocupação</p>
+                  <p className="text-2xl font-bold text-modamix-orange">13</p>
+                  <p className="text-xs text-modamix-dark/70">Expositores</p>
                 </div>
               </div>
             </div>
+
+            {/* Produtos em Destaque para Expositores */}
+            <div className="bg-white rounded-xl p-4 shadow-sm mb-6">
+              <h3 className="font-semibold text-modamix-dark mb-3">
+                Produtos em Destaque
+              </h3>
+              <p className="text-sm text-modamix-dark/70 mb-4">
+                Estes produtos estão sendo visualizados pelos expositores
+              </p>
+              <div className="space-y-3">
+                {produtosHook.produtos.slice(0, 2).map((produto) => (
+                  <div key={produto.id} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                      <Package className="w-6 h-6 text-gray-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-medium text-modamix-dark">{produto.nome}</h4>
+                      <p className="text-sm text-modamix-dark/70">{produto.categoria}</p>
+                      <p className="text-sm font-semibold text-modamix-orange">
+                        {produtosHook.formatPriceForDisplay(produto.preco)}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xs text-green-600 font-medium">Em estoque</div>
+                      <div className="text-xs text-modamix-dark/70">{produto.estoque} unidades</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+
           </div>
         );
 
-      case 'feiras':
-        return (
-          <div className="flex-1 p-4">
-            <h2 className="text-2xl font-bold text-modamix-dark mb-4">
-              Minhas Feiras
-            </h2>
-            <FornecedorForm
-              formData={formData}
-              onInputChange={onInputChange}
-              onCheckboxChange={onCheckboxChange}
-            />
-          </div>
-        );
+
 
       case 'produtos':
         return (
@@ -172,58 +192,88 @@ export const FornecedorContent: React.FC<FornecedorContentProps> = React.memo(({
         return (
           <div className="flex-1 p-4">
             <h2 className="text-2xl font-bold text-modamix-dark mb-4">
-              Relatórios
+              Relatórios de Vendas
             </h2>
             
-            {/* Relatório de Vendas */}
+            {/* Relatório de Vendas para Expositores */}
             <div className="bg-white rounded-xl p-4 shadow-sm mb-4">
               <h3 className="font-semibold text-modamix-dark mb-3">
-                Relatório de Vendas - Janeiro 2024
+                Vendas para Expositores - Janeiro 2024
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-modamix-dark/70">Total de Vendas</span>
-                  <span className="font-semibold text-modamix-dark">R$ 12.500,00</span>
+                  <span className="font-semibold text-modamix-dark">R$ 11.227,50</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-modamix-dark/70">Barracas Alugadas</span>
-                  <span className="font-semibold text-modamix-dark">25/30</span>
+                  <span className="text-modamix-dark/70">Unidades Vendidas</span>
+                  <span className="font-semibold text-modamix-dark">225</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-modamix-dark/70">Taxa de Ocupação</span>
-                  <span className="font-semibold text-modamix-dark">83,3%</span>
+                  <span className="text-modamix-dark/70">Expositores Atendidos</span>
+                  <span className="font-semibold text-modamix-dark">13</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-modamix-dark/70">Média por Barraca</span>
-                  <span className="font-semibold text-modamix-dark">R$ 500,00</span>
+                  <span className="text-modamix-dark/70">Média por Pedido</span>
+                  <span className="font-semibold text-modamix-dark">R$ 863,65</span>
                 </div>
               </div>
             </div>
 
-            {/* Relatório de Performance */}
+            {/* Top Expositores */}
             <div className="bg-white rounded-xl p-4 shadow-sm mb-4">
               <h3 className="font-semibold text-modamix-dark mb-3">
-                Performance das Feiras
+                Top Expositores
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-modamix-dark/70">Feira de Verão 2024</span>
-                  <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
-                    Excelente
-                  </span>
+                  <div>
+                    <span className="text-modamix-dark/70">Loja Fashion Rio</span>
+                    <p className="text-xs text-modamix-dark/50">5 pedidos</p>
+                  </div>
+                  <span className="font-semibold text-modamix-dark">R$ 2.450,00</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-modamix-dark/70">Taxa de Satisfação</span>
-                  <span className="font-semibold text-modamix-dark">4.8/5.0</span>
+                  <div>
+                    <span className="text-modamix-dark/70">Boutique São Paulo</span>
+                    <p className="text-xs text-modamix-dark/50">3 pedidos</p>
+                  </div>
+                  <span className="font-semibold text-modamix-dark">R$ 1.890,00</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-modamix-dark/70">Reclamações</span>
-                  <span className="font-semibold text-modamix-dark">2</span>
+                  <div>
+                    <span className="text-modamix-dark/70">Moda Express</span>
+                    <p className="text-xs text-modamix-dark/50">2 pedidos</p>
+                  </div>
+                  <span className="font-semibold text-modamix-dark">R$ 1.200,00</span>
                 </div>
               </div>
             </div>
 
-            {/* Gráfico de Tendências */}
+            {/* Performance dos Produtos */}
+            <div className="bg-white rounded-xl p-4 shadow-sm mb-4">
+              <h3 className="font-semibold text-modamix-dark mb-3">
+                Performance dos Produtos
+              </h3>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-modamix-dark/70">Camiseta Básica</span>
+                  <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
+                    Mais Vendido
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-modamix-dark/70">Taxa de Conversão</span>
+                  <span className="font-semibold text-modamix-dark">68%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-modamix-dark/70">Avaliação Média</span>
+                  <span className="font-semibold text-modamix-dark">4.8/5.0</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tendências de Vendas */}
             <div className="bg-white rounded-xl p-4 shadow-sm">
               <h3 className="font-semibold text-modamix-dark mb-3">
                 Tendências dos Últimos 6 Meses
@@ -251,7 +301,7 @@ export const FornecedorContent: React.FC<FornecedorContentProps> = React.memo(({
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Dezembro 2023</span>
-                  <span className="font-medium">R$ 12.500,00</span>
+                  <span className="font-medium">R$ 11.227,50</span>
                 </div>
               </div>
             </div>

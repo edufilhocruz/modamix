@@ -25,7 +25,7 @@ export { useFornecedor } from './hooks/useFornecedor';
 export { useProdutos } from './hooks/useProdutos';
 
 // Serviços
-export { FornecedorService } from './services/fornecedorService';
+export { fornecedorService } from './services/fornecedorService';
 export * from './services/produtoService';
 
 // Tipos

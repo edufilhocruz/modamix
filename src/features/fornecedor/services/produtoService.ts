@@ -10,7 +10,7 @@ import {
   CreateProdutoResponse,
   Categoria 
 } from '../types/fornecedor';
-import { fornecedorConfig } from '../config/fornecedor.config';
+import { FORNECEDOR_CONFIG } from '../config/fornecedor.config';
 
 /**
  * Mock data para produtos

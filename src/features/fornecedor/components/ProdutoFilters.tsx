@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Search, Filter, Plus } from 'lucide-react';
+import { Search, Plus } from 'lucide-react';
 import { Categoria } from '../types/fornecedor';
 
 /**
@@ -48,10 +48,10 @@ export const ProdutoFilters: React.FC<ProdutoFiltersProps> = React.memo(({
         </div>
         <button
           onClick={onCreateClick}
-          className="flex items-center space-x-2 px-4 py-2 bg-modamix-orange text-white rounded-lg hover:bg-orange-600 transition-colors"
+          className="flex items-center space-x-2 px-6 py-3 bg-modamix-orange text-white rounded-xl hover:bg-orange-600 transition-all duration-200 shadow-sm hover:shadow-md"
         >
-          <Plus size={16} />
-          <span>Novo Produto</span>
+          <Plus size={18} />
+          <span className="font-medium">Novo Produto</span>
         </button>
       </div>
 
@@ -60,79 +60,88 @@ export const ProdutoFilters: React.FC<ProdutoFiltersProps> = React.memo(({
         <div className="space-y-4">
           {/* Busca */}
           <div>
-            <label className="block text-sm font-medium text-modamix-dark mb-2">
+            <label className="block text-sm font-medium text-modamix-dark mb-3">
               Buscar Produtos
             </label>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder="Buscar por nome ou descrição..."
-                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-modamix-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-modamix-orange focus:border-transparent"
+                className="w-full pl-12 pr-4 py-4 border-0 rounded-xl bg-gray-50 text-modamix-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-modamix-orange focus:bg-white transition-all duration-200"
               />
             </div>
           </div>
 
           {/* Filtro por categoria */}
           <div>
-            <label className="block text-sm font-medium text-modamix-dark mb-2">
+            <label className="block text-sm font-medium text-modamix-dark mb-3">
               Filtrar por Categoria
             </label>
-            <div className="relative">
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <select
-                value={selectedCategory}
-                onChange={(e) => onCategoryChange(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-modamix-dark focus:outline-none focus:ring-2 focus:ring-modamix-orange focus:border-transparent"
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => onCategoryChange('')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  selectedCategory === ''
+                    ? 'bg-modamix-orange text-white shadow-md'
+                    : 'bg-gray-100 text-modamix-dark hover:bg-gray-200'
+                }`}
               >
-                <option value="">Todas as categorias</option>
-                {categorias.map((categoria) => (
-                  <option key={categoria.id} value={categoria.nome}>
-                    {categoria.nome}
-                  </option>
-                ))}
-              </select>
+                Todas
+              </button>
+              {categorias.map((categoria) => (
+                <button
+                  key={categoria.id}
+                  onClick={() => onCategoryChange(categoria.nome)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    selectedCategory === categoria.nome
+                      ? 'bg-modamix-orange text-white shadow-md'
+                      : 'bg-gray-100 text-modamix-dark hover:bg-gray-200'
+                  }`}
+                >
+                  {categoria.nome}
+                </button>
+              ))}
             </div>
           </div>
 
           {/* Chips de filtros ativos */}
           {(searchTerm || selectedCategory) && (
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-gray-100">
+              <span className="text-sm text-modamix-dark/60">Filtros ativos:</span>
               {searchTerm && (
-                <div className="flex items-center space-x-1 bg-modamix-orange/10 text-modamix-orange px-3 py-1 rounded-full text-sm">
+                <div className="flex items-center space-x-2 bg-modamix-orange/10 text-modamix-orange px-4 py-2 rounded-full text-sm font-medium">
                   <span>Busca: "{searchTerm}"</span>
                   <button
                     onClick={() => onSearchChange('')}
-                    className="ml-1 hover:bg-modamix-orange/20 rounded-full p-0.5"
+                    className="hover:bg-modamix-orange/20 rounded-full p-1 transition-colors"
                   >
-                    <span className="text-xs">×</span>
+                    <span className="text-xs font-bold">×</span>
                   </button>
                 </div>
               )}
               {selectedCategory && (
-                <div className="flex items-center space-x-1 bg-modamix-yellow/10 text-modamix-dark px-3 py-1 rounded-full text-sm">
+                <div className="flex items-center space-x-2 bg-modamix-yellow/10 text-modamix-dark px-4 py-2 rounded-full text-sm font-medium">
                   <span>Categoria: {selectedCategory}</span>
                   <button
                     onClick={() => onCategoryChange('')}
-                    className="ml-1 hover:bg-modamix-yellow/20 rounded-full p-0.5"
+                    className="hover:bg-modamix-yellow/20 rounded-full p-1 transition-colors"
                   >
-                    <span className="text-xs">×</span>
+                    <span className="text-xs font-bold">×</span>
                   </button>
                 </div>
               )}
-              {(searchTerm || selectedCategory) && (
-                <button
-                  onClick={() => {
-                    onSearchChange('');
-                    onCategoryChange('');
-                  }}
-                  className="text-modamix-dark/70 hover:text-modamix-dark text-sm underline"
-                >
-                  Limpar filtros
-                </button>
-              )}
+              <button
+                onClick={() => {
+                  onSearchChange('');
+                  onCategoryChange('');
+                }}
+                className="text-modamix-orange hover:text-orange-600 text-sm font-medium underline transition-colors"
+              >
+                Limpar todos
+              </button>
             </div>
           )}
         </div>
